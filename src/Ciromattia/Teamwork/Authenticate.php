@@ -4,14 +4,12 @@ namespace Ciromattia\Teamwork;
 
 class Authenticate extends AbstractObject
 {
-
-    protected $url = "https://authenticate.teamworkpm.net/authenticate.json";
+    protected $url = "https://authenticate.teamwork.com/authenticate.json";
 
     /**
      * Authenticate Details
-     * GET https://authenticate.teamworkpm.net/authenticate.json
      *
-     * @link http://developer.teamwork.com/account#the_'authenti
+     * @link https://developer.teamwork.com/account#the_'authenti
      * @return mixed
      */
     public function authenticate()

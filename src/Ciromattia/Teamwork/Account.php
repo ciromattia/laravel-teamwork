@@ -4,7 +4,6 @@ namespace Ciromattia\Teamwork;
 
 class Account extends AbstractObject
 {
-
     /**
      * Account Details
      * GET /account.json

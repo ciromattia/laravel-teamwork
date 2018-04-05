@@ -4,7 +4,6 @@ namespace Ciromattia\Teamwork\Contracts;
 
 interface RestfulInterface
 {
-
     public function all();
 
     public function create($data);

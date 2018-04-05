@@ -156,7 +156,7 @@ class Client implements RequestableInterface
      * Response
      *
      * this send the request from the built response and
-     * returns the response as a JSON payload
+     * returns the response as a JSON stdClass.
      */
     public function response($fullResponse = false)
     {
@@ -164,8 +164,9 @@ class Client implements RequestableInterface
             return $this->request;
         }
         $this->response = $this->request->getBody();
+        $payload = json_decode($this->response->getContents());
 
-        return $this->response->getContents();
+        return ($payload instanceof \stdClass || is_array($payload)) ? $payload : null;
     }
 
     /**
