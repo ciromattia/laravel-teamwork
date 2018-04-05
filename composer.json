@@ -35,5 +35,15 @@
   "suggest": {
     "illuminate/support": "Required for Laravel support"
   },
+  "extra": {
+    "laravel": {
+        "providers": [
+            "Ciromattia\\Teamwork\\TeamworkServiceProvider"
+        ],
+        "aliases": {
+            "Bar": "Ciromattia\\Teamwork\\Facades\\Teamwork"
+        }
+    }
+  },
   "minimum-stability": "stable"
 }
