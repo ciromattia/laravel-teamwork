@@ -1,6 +1,9 @@
-<?php  namespace Rossedman\Teamwork; 
+<?php
 
-class Account extends AbstractObject {
+namespace Ciromattia\Teamwork;
+
+class Account extends AbstractObject
+{
 
     /**
      * Account Details

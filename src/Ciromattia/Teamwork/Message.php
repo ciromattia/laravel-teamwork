@@ -1,13 +1,14 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
 
-use Rossedman\Teamwork\Traits\RestfulTrait;
+namespace Ciromattia\Teamwork;
 
-class Message extends AbstractObject {
+use Ciromattia\Teamwork\Traits\RestfulTrait;
 
+class Message extends AbstractObject
+{
     use RestfulTrait;
 
-    protected $wrapper  = 'post';
-
+    protected $wrapper = 'post';
     protected $endpoint = 'posts';
 
     /**
@@ -43,5 +44,4 @@ class Message extends AbstractObject {
     {
         return $this->client->put("messages/$this->id/unarchive")->response();
     }
-
 }

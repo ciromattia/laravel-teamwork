@@ -1,9 +1,11 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
 
-use Rossedman\Teamwork\Contracts\RequestableInterface;
+namespace Ciromattia\Teamwork;
 
-abstract class AbstractObject {
+use Ciromattia\Teamwork\Contracts\RequestableInterface;
 
+abstract class AbstractObject
+{
     /**
      * @var RequestableInterface
      */
@@ -21,7 +23,7 @@ abstract class AbstractObject {
 
     /**
      * @param RequestableInterface $client
-     * @param null                 $id
+     * @param null $id
      */
     public function __construct(RequestableInterface $client, $id = null)
     {
@@ -44,24 +46,23 @@ abstract class AbstractObject {
     /**
      * Are Arguments Valid
      *
-     * @param array    $args
+     * @param array $args
      * @param string[] $accepted
      *
      * @return null|bool
      */
     protected function areArgumentsValid($args, array $accepted)
     {
-        if ($args == null)
-        {
+        if ($args == null) {
             return;
         }
-        
+
         foreach ($args as $arg => $value) {
-            if (! in_array($arg, $accepted)) {
-                throw new \InvalidArgumentException('This call only accepts these arguments: ' . implode(" | ",$accepted));
+            if (!in_array($arg, $accepted)) {
+                throw new \InvalidArgumentException('This call only accepts these arguments: ' . implode(" | ", $accepted));
             }
         }
-        
+
         return true;
     }
 }

@@ -1,13 +1,14 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
 
-use Rossedman\Teamwork\Traits\RestfulTrait;
+namespace Ciromattia\Teamwork;
 
-class Time extends AbstractObject {
+use Ciromattia\Teamwork\Traits\RestfulTrait;
 
+class Time extends AbstractObject
+{
     use RestfulTrait;
 
-    protected $wrapper  = 'time-entry';
-
+    protected $wrapper = 'time-entry';
     protected $endpoint = 'time_entries';
 
     /**
@@ -55,5 +56,4 @@ class Time extends AbstractObject {
     {
         return $this->client->delete("$this->endpoint/$this->id.json")->response();
     }
-
 }

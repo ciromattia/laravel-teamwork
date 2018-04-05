@@ -1,6 +1,9 @@
-<?php  namespace Rossedman\Teamwork\Contracts;
+<?php
 
-interface RestfulInterface {
+namespace Ciromattia\Teamwork\Contracts;
+
+interface RestfulInterface
+{
 
     public function all();
 

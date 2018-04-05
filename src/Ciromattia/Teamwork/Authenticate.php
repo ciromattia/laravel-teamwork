@@ -1,6 +1,9 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
 
-class Authenticate extends AbstractObject {
+namespace Ciromattia\Teamwork;
+
+class Authenticate extends AbstractObject
+{
 
     protected $url = "https://authenticate.teamworkpm.net/authenticate.json";
 

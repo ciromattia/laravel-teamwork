@@ -2,11 +2,11 @@
 
 ![teamwork-graphic](https://cloud.githubusercontent.com/assets/2628905/7765016/853f462c-001e-11e5-90ac-389bf1a6c2fe.jpg)
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/rossedman/teamwork/badges/quality-score.png?b=master&s=997768a5d702b571dac7d50ae4f85af7236bcf5d)](https://scrutinizer-ci.com/g/rossedman/teamwork/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/rossedman/teamwork/badges/coverage.png?b=master&s=c042749710f918bf24803ebe4f86491b53562fa8)](https://scrutinizer-ci.com/g/rossedman/teamwork/?branch=master)
-[![Build Status](https://travis-ci.org/rossedman/teamwork.svg?branch=master)](https://travis-ci.org/rossedman/teamwork)
-![Release](https://img.shields.io/github/release/rossedman/teamwork.svg?style=flat)
-![License](https://img.shields.io/packagist/l/rossedman/teamwork.svg?style=flat)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ciromattia/teamwork/badges/quality-score.png?b=master&s=997768a5d702b571dac7d50ae4f85af7236bcf5d)](https://scrutinizer-ci.com/g/ciromattia/teamwork/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/ciromattia/teamwork/badges/coverage.png?b=master&s=c042749710f918bf24803ebe4f86491b53562fa8)](https://scrutinizer-ci.com/g/ciromattia/teamwork/?branch=master)
+[![Build Status](https://travis-ci.org/ciromattia/teamwork.svg?branch=master)](https://travis-ci.org/ciromattia/teamwork)
+![Release](https://img.shields.io/github/release/ciromattia/teamwork.svg?style=flat)
+![License](https://img.shields.io/packagist/l/ciromattia/teamwork.svg?style=flat)
 
 This is a simple PHP Client that can connect to the [Teamwork](http://www.teamwork.com) API. This package was developed to be used with [Laravel 5](http://www.laravel.com) but can also be used stand alone as well. I hope this helps you automate and extend Teamwork to integrate even more into your business! Have fun and good luck. :metal:
 
@@ -15,13 +15,13 @@ This is a simple PHP Client that can connect to the [Teamwork](http://www.teamwo
 Just add this to your `composer.json` and then run `composer update`.
 
 ```
-"rossedman/teamwork": "~1.0"
+"ciromattia/teamwork": "~1.3"
 ```
 
 You can also simply add it like this
 
 ```
-composer require "rossedman/teamwork:~1.0"
+composer require "ciromattia/teamwork:~1.3"
 ```
 
 ## Laravel Setup
@@ -31,7 +31,7 @@ Once this package is pulled into your project just add this to your `config/app.
 ```php
 'providers' => [
     ...
-    'Rossedman\Teamwork\TeamworkServiceProvider',
+    'Ciromattia\Teamwork\TeamworkServiceProvider',
 ],
 ```
 
@@ -40,7 +40,7 @@ and then add the facade to your `aliases` array
 ```php
 'aliases' => [
     ...
-    'Teamwork' => 'Rossedman\Teamwork\Facades\Teamwork',
+    'Teamwork' => 'Ciromattia\Teamwork\Facades\Teamwork',
 ],
 ```
 
@@ -64,10 +64,10 @@ If you are using the Facade with Laravel youc an easily access Teamwork like thi
 Teamwork::people()->all();
 ```
 
-If you want to use dependency injection to make your application easy to test the Service Provider binds `Rossedman\Teamwork\Factory`. Here is an example of how to use it with dependency injection
+If you want to use dependency injection to make your application easy to test the Service Provider binds `Ciromattia\Teamwork\Factory`. Here is an example of how to use it with dependency injection
 
 ```php
-Route::get('/test', function(Rossedman\Teamwork\Factory $teamwork) {
+Route::get('/test', function(Ciromattia\Teamwork\Factory $teamwork) {
    $activity = $teamwork->activity()->latest();
 });
 ```
@@ -80,8 +80,8 @@ If you are not using Laravel you can instantiate the class like this
 require "vendor/autoload.php";
 
 use GuzzleHttp\Client as Guzzle;
-use Rossedman\Teamwork\Client;
-use Rossedman\Teamwork\Factory as Teamwork;
+use Ciromattia\Teamwork\Client;
+use Ciromattia\Teamwork\Factory as Teamwork;
 
 $client     = new Client(new Guzzle, 'YourSecretKey', 'YourTeamworkUrl');
 $teamwork   = new Teamwork($client);
@@ -95,7 +95,7 @@ You are ready to go now!
 
 Not all of the Teamwork API is supported yet but there is still a lot you can do! Below are some examples of how you can access Projects, Companies, and more. To work with a specific Object pass in the ID to perform actions on it. Data can be passed through for creating and editing.
 
-**To see more examples [visit the docs](http://rossedman.github.io/teamwork/)**
+**To see more examples [visit the docs](http://ciromattia.github.io/teamwork/)**
 
 ```php
 // create a project

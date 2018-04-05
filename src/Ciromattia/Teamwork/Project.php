@@ -1,14 +1,15 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
 
-use Rossedman\Teamwork\Traits\TimeTrait;
-use Rossedman\Teamwork\Traits\RestfulTrait;
+namespace Ciromattia\Teamwork;
 
-class Project extends AbstractObject {
+use Ciromattia\Teamwork\Traits\TimeTrait;
+use Ciromattia\Teamwork\Traits\RestfulTrait;
 
+class Project extends AbstractObject
+{
     use RestfulTrait, TimeTrait;
 
-    protected $wrapper  = 'project';
-
+    protected $wrapper = 'project';
     protected $endpoint = 'projects';
 
     /**
@@ -146,7 +147,8 @@ class Project extends AbstractObject {
      *
      * @return mixed
      */
-    public function createMilestone($args) {
+    public function createMilestone($args)
+    {
         return $this->client->post("$this->endpoint/$this->id/milestones", ['milestone' => $args])->response();
     }
 
@@ -158,7 +160,8 @@ class Project extends AbstractObject {
      *
      * @return mixed
      */
-    public function createTasklist($args) {
+    public function createTasklist($args)
+    {
         return $this->client->post("$this->endpoint/$this->id/tasklists", ['todo-list' => $args])->response();
     }
 
@@ -216,6 +219,4 @@ class Project extends AbstractObject {
     {
         return $this->client->get("$this->endpoint/$this->id/time_entries", $args)->response();
     }
-
-
 }

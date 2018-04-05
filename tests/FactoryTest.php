@@ -1,14 +1,15 @@
 <?php
 
 use Mockery as m;
-use Rossedman\Teamwork\Factory;
+use PHPUnit\Framework\TestCase;
+use Ciromattia\Teamwork\Factory;
 
-class FactoryTest extends PHPUnit_Framework_TestCase {
+class FactoryTest extends TestCase {
 
     public function setUp()
     {
         parent::setUp();
-        $this->requestable = m::mock('Rossedman\Teamwork\Contracts\RequestableInterface');
+        $this->requestable = m::mock('Ciromattia\Teamwork\Contracts\RequestableInterface');
     }
 
     public function tearDown()
@@ -22,12 +23,12 @@ class FactoryTest extends PHPUnit_Framework_TestCase {
     public function test_that_it_returns_new_account_object()
     {
         $factory = new Factory($this->requestable);
-        $this->assertInstanceOf('Rossedman\Teamwork\Account', $factory->account());
+        $this->assertInstanceOf('Ciromattia\Teamwork\Account', $factory->account());
     }
 
     /**
      * @group factory
-     * @expectedException Rossedman\Teamwork\Exceptions\ClassNotCreatedException
+     * @expectedException Ciromattia\Teamwork\Exceptions\ClassNotCreatedException
      */
     public function test_that_it_fails_when_object_does_not_exist()
     {

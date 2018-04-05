@@ -1,10 +1,12 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
+
+namespace Ciromattia\Teamwork;
 
 use GuzzleHttp\Client as Guzzle;
-use Rossedman\Teamwork\Contracts\RequestableInterface;
+use Ciromattia\Teamwork\Contracts\RequestableInterface;
 
-class Client implements RequestableInterface {
-
+class Client implements RequestableInterface
+{
     /**
      * @var GuzzleHttp\Client
      */
@@ -123,22 +125,19 @@ class Client implements RequestableInterface {
      *
      * @param        $endpoint
      * @param string $action
-     * @param array  $params
+     * @param array $params
      *
      * @return $this
      */
     public function buildRequest($endpoint, $action, $params = [], $query = null)
     {
-        if (count($params) > 0)
-        {
+        if (count($params) > 0) {
             $params = json_encode($params);
         }
 
         $options = ['auth' => [$this->key, 'X']];
-        
-        
-        if ($query != null)
-        {
+
+        if ($query != null) {
             $options['query'] = $query;
         }
 
@@ -164,9 +163,8 @@ class Client implements RequestableInterface {
         if ($fullResponse) {
             return $this->request;
         }
-        
         $this->response = $this->request->getBody();
-        
+
         return $this->response->getContents();
     }
 
@@ -183,13 +181,10 @@ class Client implements RequestableInterface {
      */
     public function buildUrl($endpoint)
     {
-        if (filter_var($endpoint, FILTER_VALIDATE_URL))
-        {
+        if (filter_var($endpoint, FILTER_VALIDATE_URL)) {
             return $endpoint . '.' . $this->dataFormat;
         }
-
-        if (substr($this->url, -1) != '/')
-        {
+        if (substr($this->url, -1) != '/') {
             $this->url = $this->url . '/';
         }
 

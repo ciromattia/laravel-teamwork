@@ -1,6 +1,9 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
 
-class Activity extends AbstractObject {
+namespace Ciromattia\Teamwork;
+
+class Activity extends AbstractObject
+{
 
     /**
      * Latest Activity

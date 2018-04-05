@@ -1,13 +1,14 @@
-<?php  namespace Rossedman\Teamwork; 
+<?php
 
-use Rossedman\Teamwork\Traits\RestfulTrait;
+namespace Ciromattia\Teamwork;
 
-class People extends AbstractObject {
+use Ciromattia\Teamwork\Traits\RestfulTrait;
 
+class People extends AbstractObject
+{
     use RestfulTrait;
 
-    protected $wrapper  = 'person';
-
+    protected $wrapper = 'person';
     protected $endpoint = 'people';
 
     /**
@@ -40,5 +41,4 @@ class People extends AbstractObject {
     {
         return $this->client->get("$this->endpoint/APIKeys")->response();
     }
-
 }

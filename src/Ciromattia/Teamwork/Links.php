@@ -1,13 +1,14 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
 
-use Rossedman\Teamwork\Traits\RestfulTrait;
+namespace Ciromattia\Teamwork;
 
-class Links extends AbstractObject {
+use Ciromattia\Teamwork\Traits\RestfulTrait;
 
+class Links extends AbstractObject
+{
     use RestfulTrait;
 
-    protected $wrapper  = 'link';
-
+    protected $wrapper = 'link';
     protected $endpoint = 'links';
 
     /**

@@ -1,13 +1,14 @@
-<?php  namespace Rossedman\Teamwork; 
+<?php
 
-use Rossedman\Teamwork\Traits\RestfulTrait;
+namespace Ciromattia\Teamwork;
 
-class Milestone extends AbstractObject {
+use Ciromattia\Teamwork\Traits\RestfulTrait;
 
+class Milestone extends AbstractObject
+{
     use RestfulTrait;
 
-    protected $wrapper  = 'milestone';
-
+    protected $wrapper = 'milestone';
     protected $endpoint = 'milestones';
 
     /**
@@ -61,5 +62,4 @@ class Milestone extends AbstractObject {
     {
         return $this->client->put("$this->endpoint/$this->id/uncomplete", [$this->wrapper => $data])->response();
     }
-
 }

@@ -1,29 +1,39 @@
 {
-    "name": "morningtrain/teamwork",
-    "description": "PHP wrapper for the Teamwork project management API",
-    "keywords": ["teamwork", "api", "laravel", "project management"],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Ross Edman",
-            "email": "ross.edman@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=5.4.0",
-        "guzzlehttp/guzzle": "~6.0"
+  "name": "ciromattia/teamwork",
+  "description": "PHP wrapper for the Teamwork project management API",
+  "keywords": [
+    "teamwork",
+    "api",
+    "laravel",
+    "project management"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ross Edman",
+      "email": "ross.edman@gmail.com"
     },
-    "require-dev": {
-        "phpunit/phpunit": "~4.5",
-        "mockery/mockery": "0.9.*"
-    },
-    "autoload": {
-        "psr-0": {
-            "Rossedman\\Teamwork\\": "src"
-        }
-    },
-    "suggest": {
-        "illuminate/support": "Required for Laravel support"
-    },
-    "minimum-stability": "stable"
+    {
+      "name": "Ciro Mattia Gonano",
+      "email": "ciromattia.gonano@marketingarena.it"
+    }
+  ],
+  "require": {
+    "php": ">=7.1.0",
+    "guzzlehttp/guzzle": "~6.3"
+
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.0",
+    "mockery/mockery": "^1.0"
+  },
+  "autoload": {
+    "psr-0": {
+      "Ciromattia\\Teamwork\\": "src"
+    }
+  },
+  "suggest": {
+    "illuminate/support": "Required for Laravel support"
+  },
+  "minimum-stability": "stable"
 }

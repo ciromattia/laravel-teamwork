@@ -1,10 +1,12 @@
-<?php namespace Rossedman\Teamwork;
+<?php
 
-use Rossedman\Teamwork\Contracts\RequestableInterface;
-use Rossedman\Teamwork\Exceptions\ClassNotCreatedException;
+namespace Ciromattia\Teamwork;
 
-class Factory {
+use Ciromattia\Teamwork\Contracts\RequestableInterface;
+use Ciromattia\Teamwork\Exceptions\ClassNotCreatedException;
 
+class Factory
+{
     protected $client;
 
     /**
@@ -18,18 +20,17 @@ class Factory {
     /**
      * @param $method
      * @param $parameters
-     *
      * @return mixed
      * @throws ClassNotCreatedException
+     * @throws \ReflectionException
      */
     public function __call($method, $parameters)
     {
         $class = $this->getQualifiedName($method);
-
-        $this->doesClassExist($class);
-
-        if($this->paramIsId($parameters) == true)
-        {
+        if (!class_exists($class)) {
+            throw new ClassNotCreatedException("Class $class could not be created.");
+        }
+        if ($this->paramIsId($parameters) == true) {
             return new $class($this->client, $parameters[0]);
         }
 
@@ -37,9 +38,10 @@ class Factory {
     }
 
     /**
-     * Get Namespace
+     * Get namespace
      *
-     * @return mixed
+     * @return string
+     * @throws \ReflectionException
      */
     private function getNamespace()
     {
@@ -55,12 +57,12 @@ class Factory {
      * for class to instantiate
      *
      * @param $method
-     *
      * @return string
+     * @throws \ReflectionException
      */
     protected function getQualifiedName($method)
     {
-        return $this->getNamespace().'\\'.ucfirst($method);
+        return $this->getNamespace() . '\\' . ucfirst($method);
     }
 
     /**
@@ -70,31 +72,16 @@ class Factory {
      * an integer?
      *
      * @param $parameters
-     *
      * @return bool
+     * @throws \InvalidArgumentException
      */
     protected function paramIsId($parameters)
     {
-        if($parameters == null) return null;
+        if ($parameters == null) return null;
 
-        if ( ! is_int($parameters[0]))
-        {
+        if (!is_int($parameters[0])) {
             throw new \InvalidArgumentException("This is not a valid ID");
         }
-
         return true;
-    }
-
-    /**
-     * @param $class
-     *
-     * @throws ClassNotCreatedException
-     */
-    protected function doesClassExist($class)
-    {
-        if ( ! class_exists($class))
-        {
-            throw new ClassNotCreatedException("Class $class could not be created.");
-        }
     }
 }

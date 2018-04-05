@@ -1,7 +1,9 @@
-<?php  namespace Rossedman\Teamwork\Traits; 
+<?php
 
-trait TimeTrait {
+namespace Ciromattia\Teamwork\Traits;
 
+trait TimeTrait
+{
     /**
      * Time Entries
      * GET /projects/{id}/time_entries.json
@@ -25,5 +27,4 @@ trait TimeTrait {
     {
         return $this->client->post("$this->endpoint/$this->id/time_entries", ['time-entry' => $data])->response();
     }
-
 }

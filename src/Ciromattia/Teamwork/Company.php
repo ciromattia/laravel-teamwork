@@ -1,13 +1,15 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
 
-use Rossedman\Teamwork\Traits\RestfulTrait;
+namespace Ciromattia\Teamwork;
 
-class Company extends AbstractObject {
+use Ciromattia\Teamwork\Traits\RestfulTrait;
+
+class Company extends AbstractObject
+{
 
     use RestfulTrait;
 
-    protected $wrapper  = 'company';
-
+    protected $wrapper = 'company';
     protected $endpoint = 'companies';
 
     /**
@@ -22,7 +24,7 @@ class Company extends AbstractObject {
     {
         return $this->client->get("$this->endpoint/$this->id/people")->response();
     }
-    
+
     /**
      * Get Projects Associated With Company
      * GET /companies/{company_id}/projects.json
@@ -34,5 +36,5 @@ class Company extends AbstractObject {
     public function projects()
     {
         return $this->client->get("$this->endpoint/$this->id/projects")->response();
-    }    
+    }
 }

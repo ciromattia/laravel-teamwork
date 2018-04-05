@@ -1,13 +1,14 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
 
-use Rossedman\Teamwork\Traits\RestfulTrait;
+namespace Ciromattia\Teamwork;
 
-class Comments extends AbstractObject {
+use Ciromattia\Teamwork\Traits\RestfulTrait;
 
+class Comments extends AbstractObject
+{
     use RestfulTrait;
 
-    protected $wrapper  = 'comment';
-
+    protected $wrapper = 'comment';
     protected $endpoint = 'comments';
 
     /**

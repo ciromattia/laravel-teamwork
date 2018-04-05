@@ -1,14 +1,15 @@
-<?php  namespace Rossedman\Teamwork;
+<?php
 
-use Rossedman\Teamwork\Traits\TimeTrait;
-use Rossedman\Teamwork\Traits\RestfulTrait;
+namespace Ciromattia\Teamwork;
 
-class Task extends AbstractObject {
+use Ciromattia\Teamwork\Traits\TimeTrait;
+use Ciromattia\Teamwork\Traits\RestfulTrait;
 
+class Task extends AbstractObject
+{
     use RestfulTrait, TimeTrait;
 
-    protected $wrapper  = 'task';
-
+    protected $wrapper = 'task';
     protected $endpoint = 'tasks';
 
     /**
@@ -58,7 +59,7 @@ class Task extends AbstractObject {
     {
         return $this->client->get("$this->endpoint/$this->id/time/total")->response();
     }
-    
+
     /**
      * Create Time Entry
      * POST /tasks/{id}/time_entries.json

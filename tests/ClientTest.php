@@ -1,9 +1,11 @@
 <?php
 
 use Mockery as m;
-use Rossedman\Teamwork\Client;
+use PHPUnit\Framework\TestCase;
+use Ciromattia\Teamwork\Client;
 
-class ClientTest extends PHPUnit_Framework_TestCase {
+class ClientTest extends TestCase
+{
 
     protected $guzzle;
 
@@ -21,18 +23,40 @@ class ClientTest extends PHPUnit_Framework_TestCase {
     /**
      * @group client
      */
-    public function test_it_builds_the_request()
+    public function test_it_builds_the_request_get()
     {
         $client = new Client($this->guzzle, 'key', 'http://teamwork.com');
 
         $this->guzzle
-            ->shouldReceive('createRequest')->once()
-            ->with('GET', 'http://teamwork.com/packages.json', ['auth' => ['key', 'X'], 'body' => []])
+            ->shouldReceive('request')->once()
+            ->with('GET',
+                'http://teamwork.com/packages.json',
+                ['auth' => ['key', 'X']])
             ->andReturn(m::mock('GuzzleHttp\Message\Request'));
 
         $returned = $client->buildRequest('packages', 'GET');
 
-        $this->assertInstanceOf('Rossedman\Teamwork\Client', $returned);
+        $this->assertInstanceOf('Ciromattia\Teamwork\Client', $returned);
+        $this->assertInstanceOf('GuzzleHttp\Message\Request', $returned->getRequest());
+    }
+
+    /**
+     * @group client
+     */
+    public function test_it_builds_the_request_post()
+    {
+        $client = new Client($this->guzzle, 'key', 'http://teamwork.com');
+
+        $this->guzzle
+            ->shouldReceive('request')->once()
+            ->with('POST',
+                'http://teamwork.com/packages.json',
+                ['body' => '{"key":"value"}', 'auth' => ['key', 'X']])
+            ->andReturn(m::mock('GuzzleHttp\Message\Request'));
+
+        $returned = $client->buildRequest('packages', 'POST', ['key' => 'value']);
+
+        $this->assertInstanceOf('Ciromattia\Teamwork\Client', $returned);
         $this->assertInstanceOf('GuzzleHttp\Message\Request', $returned->getRequest());
     }
 

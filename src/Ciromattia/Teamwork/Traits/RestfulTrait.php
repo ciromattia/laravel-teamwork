@@ -1,7 +1,9 @@
-<?php namespace Rossedman\Teamwork\Traits;
+<?php
 
-trait RestfulTrait {
+namespace Ciromattia\Teamwork\Traits;
 
+trait RestfulTrait
+{
     /**
      * @return mixed
      */
@@ -41,6 +43,4 @@ trait RestfulTrait {
     {
         return $this->client->delete("$this->endpoint/$this->id")->response();
     }
-
-
 }

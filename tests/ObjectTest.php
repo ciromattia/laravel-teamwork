@@ -1,15 +1,16 @@
 <?php
 
 use Mockery as m;
+use PHPUnit\Framework\TestCase;
 
-class ObjectTest extends PHPUnit_Framework_TestCase {
-
+class ObjectTest extends TestCase
+{
     protected $object;
 
     public function setUp()
     {
         parent::setup();
-        $request = m::mock('Rossedman\Teamwork\Contracts\RequestableInterface');
+        $request = m::mock('Ciromattia\Teamwork\Contracts\RequestableInterface');
         $this->object = new ObjectStub($request);
     }
 
@@ -61,7 +62,8 @@ class ObjectTest extends PHPUnit_Framework_TestCase {
 
 }
 
-class ObjectStub extends \Rossedman\Teamwork\AbstractObject {
+class ObjectStub extends \Ciromattia\Teamwork\AbstractObject
+{
 
     public function valid_args($args, $accepted)
     {
