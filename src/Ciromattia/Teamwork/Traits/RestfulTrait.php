@@ -15,9 +15,13 @@ trait RestfulTrait
     /**
      * @return mixed
      */
-    public function find()
+    public function find($id = null)
     {
-        return $this->client->get("$this->endpoint/$this->id")->response();
+        if (!empty($id))
+            $this->id = $id;
+        if (!$this->id)
+            throw new \InvalidArgumentException('No valid ID provided');
+        return $this->client->get("$this->endpoint/{$this->id}")->response();
     }
 
     /**
@@ -31,16 +35,24 @@ trait RestfulTrait
     /**
      * @return mixed
      */
-    public function update($data)
+    public function update($data, $id = null)
     {
+        if (!empty($id))
+            $this->id = $id;
+        if (!$this->id)
+            throw new \InvalidArgumentException('No valid ID provided');
         return $this->client->put("$this->endpoint/$this->id", [$this->wrapper => $data])->response();
     }
 
     /**
      * @return mixed
      */
-    public function delete()
+    public function delete($id = null)
     {
+        if (!empty($id))
+            $this->id = $id;
+        if (!$this->id)
+            throw new \InvalidArgumentException('No valid ID provided');
         return $this->client->delete("$this->endpoint/$this->id")->response();
     }
 }
