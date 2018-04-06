@@ -1,33 +1,28 @@
-# Laravel 5 Teamwork PM API Bridge
+# Laravel ServiceProvider for Teamwork
 
-![teamwork-graphic](https://cloud.githubusercontent.com/assets/2628905/7765016/853f462c-001e-11e5-90ac-389bf1a6c2fe.jpg)
+![teamwork-developer](https://developer.teamwork.com/images/logo-api.png)
 
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ciromattia/teamwork/badges/quality-score.png?b=master&s=997768a5d702b571dac7d50ae4f85af7236bcf5d)](https://scrutinizer-ci.com/g/ciromattia/teamwork/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/ciromattia/teamwork/badges/coverage.png?b=master&s=c042749710f918bf24803ebe4f86491b53562fa8)](https://scrutinizer-ci.com/g/ciromattia/teamwork/?branch=master)
-[![Build Status](https://travis-ci.org/ciromattia/teamwork.svg?branch=master)](https://travis-ci.org/ciromattia/teamwork)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ciromattia/laravel-teamwork/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ciromattia/laravel-teamwork/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/ciromattia/laravel-teamwork/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ciromattia/laravel-teamwork/?branch=master)
+[![Build Status](https://travis-ci.org/ciromattia/laravel-teamwork.svg?branch=master)](https://travis-ci.org/ciromattia/laravel-teamwork)
 ![Release](https://img.shields.io/github/release/ciromattia/teamwork.svg?style=flat)
 ![License](https://img.shields.io/packagist/l/ciromattia/teamwork.svg?style=flat)
 
-This is a simple PHP Client that can connect to the [Teamwork](http://www.teamwork.com) API. This package was developed to be used with [Laravel 5](http://www.laravel.com) but can also be used stand alone as well. I hope this helps you automate and extend Teamwork to integrate even more into your business! Have fun and good luck. :metal:
+This package aims to implement the [Teamwork API](https://developer.teamwork.com) in a Service Provider for Laravel 5.
 
 ## Installation
 
-Just add this to your `composer.json` and then run `composer update`.
+Add the package through composer:
 
 ```
-"ciromattia/teamwork": "~1.3"
-```
-
-You can also simply add it like this
-
-```
-composer require "ciromattia/teamwork:~1.3"
+composer require "ciromattia/laravel-teamwork:~1.3"
 ```
 
 ## Laravel Setup
 
-This wrapper comes with support for `Laravel 5`. This includes a service provider as well as a facade for easy access.
-Once this package is pulled into your project just add this to your `config/app.php` file.
+The Service Provider is auto-discoverable by Laravel 5.5+.
+
+If you're using Laravel 5.4 or earlier, you have to manually add the following to your `config/app.php` file.
 ```php
 'providers' => [
     ...
@@ -46,7 +41,7 @@ and then add the facade to your `aliases` array
 
 ### Configuration
 
-If you are using Laravel then add a `teamwork` array to your `config/services.php` file
+Add a `teamwork` array to your `config/services.php` file
 
 ```php
 ...
@@ -58,19 +53,50 @@ If you are using Laravel then add a `teamwork` array to your `config/services.ph
 
 ### Use
 
-If you are using the Facade with Laravel youc an easily access Teamwork like this
+There are two ways to use this stuff: the first is by the Teamwork Facade, like this
 
 ```php
 Teamwork::people()->all();
 ```
 
-If you want to use dependency injection to make your application easy to test the Service Provider binds `Ciromattia\Teamwork\Factory`. Here is an example of how to use it with dependency injection
+If you want to use dependency injection to make your application easy to test, the Service Provider binds `Ciromattia\Teamwork\Factory`. Here is an example of how to use it with dependency injection
 
 ```php
 Route::get('/test', function(Ciromattia\Teamwork\Factory $teamwork) {
    $activity = $teamwork->activity()->latest();
 });
 ```
+
+#### Methods
+
+The methods available mimic the Teamwork entities in lowercase and query the namesake API, so you can retrieve e.g. a single project with:
+
+```php
+Teamwork::project($project_id)->find();
+```
+
+Common methods available to all the entities are:
+* `all()` - returns all the query results (i.e. all the entity objects).
+* `find($id)` - returns a single object with the specified ID.
+* `create($data)` - creates a single object with `$data` parameters.  
+* `update($data)` - updates a single object with `$data` parameters.
+* `delete($id)` - deletes a single object with the specified ID.  
+  
+The implemented entities at the moment are:
+* [Comments](https://developer.teamwork.com/comments)
+* [Company](https://developer.teamwork.com/companies)
+* [Links](https://developer.teamwork.com/links)
+* [Message](https://developer.teamwork.com/message)
+* [Milestone](https://developer.teamwork.com/milestone)
+* [People](https://developer.teamwork.com/people)
+* [Project](https://developer.teamwork.com/projectsapi)
+* [Task](https://developer.teamwork.com/todolistitems)
+* [Tasklist](https://developer.teamwork.com/tasklists)
+* [Time](https://developer.teamwork.com/timetracking)
+
+The following special entities don't have the common methods specified above: 
+* [Account](https://developer.teamwork.com/account)
+* [Activity](https://developer.teamwork.com/activity)
 
 ## Configuration Without Laravel
 
@@ -95,7 +121,7 @@ You are ready to go now!
 
 Not all of the Teamwork API is supported yet but there is still a lot you can do! Below are some examples of how you can access Projects, Companies, and more. To work with a specific Object pass in the ID to perform actions on it. Data can be passed through for creating and editing.
 
-**To see more examples [visit the docs](http://ciromattia.github.io/teamwork/)**
+**To see more examples [visit the docs](http://ciromattia.github.io/laravel-teamwork/)**
 
 ```php
 // create a project
@@ -111,14 +137,9 @@ $teamwork->project($projectID)->activity();
 
 ## Roadmap
 
-#### 1.1 Release
-
+#### 2.0 Release
 - [X] Add Support For `Comments`
 - [ ] Add Support For `Permissions`
-- [ ] Add Support For `Time` Endpoint
-
-#### 1.2 Release
-
 - [ ] Add Support For `Categories`
 - [ ] Add Support For `People Status`
 - [ ] Add Support For `Files`
