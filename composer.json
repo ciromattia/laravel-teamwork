@@ -10,12 +10,12 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Ross Edman",
-      "email": "ross.edman@gmail.com"
-    },
-    {
       "name": "Ciro Mattia Gonano",
       "email": "ciromattia.gonano@marketingarena.it"
+    },
+    {
+      "name": "Ross Edman",
+      "email": "ross.edman@gmail.com"
     }
   ],
   "require": {
