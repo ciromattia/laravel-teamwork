@@ -62,7 +62,7 @@ class ObjectTest extends TestCase
 
 }
 
-class ObjectStub extends \Ciromattia\Teamwork\AbstractObject
+class ObjectStub extends \Ciromattia\Teamwork\TeamworkObject
 {
 
     public function valid_args($args, $accepted)

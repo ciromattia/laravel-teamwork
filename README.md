@@ -5,8 +5,8 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/ciromattia/laravel-teamwork/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/ciromattia/laravel-teamwork/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/ciromattia/laravel-teamwork/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/ciromattia/laravel-teamwork/?branch=master)
 [![Build Status](https://travis-ci.org/ciromattia/laravel-teamwork.svg?branch=master)](https://travis-ci.org/ciromattia/laravel-teamwork)
-![Release](https://img.shields.io/github/release/ciromattia/teamwork.svg?style=flat)
-![License](https://img.shields.io/packagist/l/ciromattia/teamwork.svg?style=flat)
+![Release](https://img.shields.io/github/release/ciromattia/laravel-teamwork.svg?style=flat)
+![License](https://img.shields.io/packagist/l/ciromattia/laravel-teamwork.svg?style=flat)
 
 This package aims to implement the [Teamwork API](https://developer.teamwork.com) in a Service Provider for Laravel 5.
 

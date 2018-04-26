@@ -1,5 +1,5 @@
 {
-  "name": "ciromattia/teamwork",
+  "name": "ciromattia/laravel-teamwork",
   "description": "PHP wrapper for the Teamwork project management API",
   "keywords": [
     "teamwork",
