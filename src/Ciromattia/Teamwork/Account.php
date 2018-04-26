@@ -2,7 +2,7 @@
 
 namespace Ciromattia\Teamwork;
 
-class Account extends AbstractObject
+class Account extends TeamworkObject
 {
     /**
      * Account Details

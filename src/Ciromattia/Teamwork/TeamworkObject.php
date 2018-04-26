@@ -4,7 +4,7 @@ namespace Ciromattia\Teamwork;
 
 use Ciromattia\Teamwork\Contracts\RequestableInterface;
 
-abstract class AbstractObject
+abstract class TeamworkObject
 {
     /**
      * @var RequestableInterface
@@ -49,7 +49,7 @@ abstract class AbstractObject
     protected function areArgumentsValid($args, array $accepted)
     {
         if ($args == null) {
-            return;
+            return null;
         }
 
         foreach ($args as $arg => $value) {

@@ -2,7 +2,7 @@
 
 namespace Ciromattia\Teamwork;
 
-class Tasklist extends AbstractObject
+class Tasklist extends TeamworkObject
 {
 
     protected $wrapper = 'todo-list';

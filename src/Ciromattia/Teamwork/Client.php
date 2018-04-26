@@ -4,21 +4,23 @@ namespace Ciromattia\Teamwork;
 
 use GuzzleHttp\Client as Guzzle;
 use Ciromattia\Teamwork\Contracts\RequestableInterface;
+use Psr\Http\Message\RequestInterface;
+use Psr\Http\Message\ResponseInterface;
 
 class Client implements RequestableInterface
 {
     /**
-     * @var GuzzleHttp\Client
+     * @var Guzzle
      */
     protected $client;
 
     /**
-     * @var GuzzleHttp\Request
+     * @var RequestInterface
      */
     protected $request;
 
     /**
-     * @var GuzzleHttp\Response
+     * @var ResponseInterface
      */
     protected $response;
 
@@ -97,7 +99,7 @@ class Client implements RequestableInterface
      *
      * @return Client
      */
-    public function put($endpoint, $data)
+    public function put($endpoint, $data = [])
     {
         return $this->buildRequest($endpoint, 'PUT', $data);
     }
@@ -126,6 +128,7 @@ class Client implements RequestableInterface
      * @param        $endpoint
      * @param string $action
      * @param array $params
+     * @throws
      *
      * @return $this
      */

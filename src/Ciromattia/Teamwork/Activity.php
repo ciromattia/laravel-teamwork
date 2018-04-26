@@ -2,7 +2,7 @@
 
 namespace Ciromattia\Teamwork;
 
-class Activity extends AbstractObject
+class Activity extends TeamworkObject
 {
 
     /**

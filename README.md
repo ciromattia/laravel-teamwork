@@ -1,4 +1,4 @@
-# Laravel ServiceProvider for Teamwork
+# Laravel Service Provider for Teamwork
 
 ![teamwork-developer](https://developer.teamwork.com/images/logo-api.png)
 
@@ -138,9 +138,13 @@ $teamwork->project($projectID)->activity();
 ## Roadmap
 
 #### 2.0 Release
+- [ ] Add support for paging
 - [X] Add Support For `Comments`
 - [ ] Add Support For `Permissions`
 - [ ] Add Support For `Categories`
 - [ ] Add Support For `People Status`
 - [ ] Add Support For `Files`
 - [ ] Add Support For `Notebooks`
+
+## Credits
+This library is an evolution of the now abandoned [Teamwork 5 PM API Bridge](https://github.com/rossedman/teamwork) by Ross Edman.

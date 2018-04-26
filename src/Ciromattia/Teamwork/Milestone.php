@@ -4,7 +4,7 @@ namespace Ciromattia\Teamwork;
 
 use Ciromattia\Teamwork\Traits\RestfulTrait;
 
-class Milestone extends AbstractObject
+class Milestone extends TeamworkObject
 {
     use RestfulTrait;
 

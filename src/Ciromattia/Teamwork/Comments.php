@@ -4,7 +4,7 @@ namespace Ciromattia\Teamwork;
 
 use Ciromattia\Teamwork\Traits\RestfulTrait;
 
-class Comments extends AbstractObject
+class Comments extends TeamworkObject
 {
     use RestfulTrait;
 

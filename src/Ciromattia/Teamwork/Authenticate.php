@@ -2,7 +2,7 @@
 
 namespace Ciromattia\Teamwork;
 
-class Authenticate extends AbstractObject
+class Authenticate extends TeamworkObject
 {
     protected $url = "https://authenticate.teamwork.com/authenticate.json";
 

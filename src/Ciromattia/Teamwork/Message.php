@@ -4,7 +4,7 @@ namespace Ciromattia\Teamwork;
 
 use Ciromattia\Teamwork\Traits\RestfulTrait;
 
-class Message extends AbstractObject
+class Message extends TeamworkObject
 {
     use RestfulTrait;
 

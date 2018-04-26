@@ -5,7 +5,7 @@ namespace Ciromattia\Teamwork;
 use Ciromattia\Teamwork\Traits\TimeTrait;
 use Ciromattia\Teamwork\Traits\RestfulTrait;
 
-class Task extends AbstractObject
+class Task extends TeamworkObject
 {
     use RestfulTrait, TimeTrait;
 
