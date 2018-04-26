@@ -5,11 +5,21 @@ namespace Ciromattia\Teamwork\Traits;
 trait RestfulTrait
 {
     /**
+     * @param string|array $query The query parameters (optional).
      * @return mixed
      */
-    public function all()
+    public function all($query = '')
     {
-        return $this->client->get($this->endpoint)->response();
+        if (!empty($query)) {
+            if (is_array($query)) {
+                $query = http_build_query($query);
+            } else if (is_string($query)) {
+
+            } else {
+                $query = '';
+            }
+        }
+        return $this->client->get($this->endpoint, $query)->response();
     }
 
     /**
