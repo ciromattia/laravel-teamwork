@@ -19,7 +19,12 @@ trait RestfulTrait
                 $query = '';
             }
         }
-        return $this->client->get($this->endpoint, $query)->response();
+        $response = $this->client->get($this->endpoint, $query)->response();
+        if ($response->STATUS == 'OK') {
+            return $response->{$this->wrapper};
+        } else {
+            return $response->status;
+        }
     }
 
     /**
@@ -31,7 +36,12 @@ trait RestfulTrait
             $this->id = $id;
         if (!$this->id)
             throw new \InvalidArgumentException('No valid ID provided');
-        return $this->client->get("$this->endpoint/{$this->id}")->response();
+        $response = $this->client->get("$this->endpoint/{$this->id}")->response();
+        if ($response->STATUS == 'OK') {
+            return $response->{$this->wrapper};
+        } else {
+            return $response->status;
+        }
     }
 
     /**

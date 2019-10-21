@@ -79,8 +79,9 @@ class Factory
     {
         if ($parameters == null) return null;
 
-        if (!is_int($parameters[0])) {
-            throw new \InvalidArgumentException("This is not a valid ID");
+        // ensure id is numeric
+        if ($parameters[0] != intval($parameters[0])) {
+            throw new \InvalidArgumentException("[{$parameters[0]} ] is not a valid ID");
         }
         return true;
     }

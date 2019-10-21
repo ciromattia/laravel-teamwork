@@ -33,7 +33,8 @@
     }
   },
   "suggest": {
-    "illuminate/support": "Required for Laravel support"
+    "illuminate/support": "Required for Laravel support",
+    "nesbot/carbon": "Required for Laravel support"
   },
   "extra": {
     "laravel": {

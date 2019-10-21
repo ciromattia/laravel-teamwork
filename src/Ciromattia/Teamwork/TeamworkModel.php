@@ -2,9 +2,12 @@
 
 namespace Ciromattia\Teamwork;
 
+use Exception;
+use ArrayAccess;
+use JsonSerializable;
 use Ciromattia\Teamwork\Contracts\RequestableInterface;
 
-abstract class TeamworkObject
+abstract class TeamworkModel implements ArrayAccess, JsonSerializable
 {
     /**
      * @var RequestableInterface
