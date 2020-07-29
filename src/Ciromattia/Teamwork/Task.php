@@ -22,9 +22,20 @@ class Task extends TeamworkObject
      */
     public function all($args = null)
     {
-        $this->areArgumentsValid($args, ['filter', 'page', 'pageSize', 'startdate', 'enddate', 'updatedAfterDate', 'completedAfterDate', 'completedBeforeDate', 'showDeleted', 'includeCompletedTasks', 'includeCompletedSubtasks', 'creator-ids', 'include', 'responsible-party-ids', 'sort', 'getSubTasks', 'nestSubTasks', 'getFiles', 'dataSet', 'includeToday', 'ignore-start-date']);
+        $this->areArgumentsValid($args, ['filter', 'page', 'pageSize', 'startdate', 'enddate', 'updatedAfterDate', 'completedAfterDate', 'completedBeforeDate', 'showDeleted', 'includeCompletedTasks', 'includeCompletedSubtasks', 'creator-ids', 'include', 'responsible-party-ids', 'sort', 'getSubTasks', 'nestSubTasks', 'getFiles', 'dataSet', 'includeToday', 'ignore-start-date', 'tag-ids']);
 
         return $this->client->get($this->endpoint, $args)->response();
+    }
+    
+     /**
+     * Get detail of a single task
+     * GET tasks/{id}.json
+     *
+     * @return mixed
+     */
+    public function details()
+    {
+        return $this->client->get("$this->endpoint/$this->id", [])->response();
     }
 
     /**
